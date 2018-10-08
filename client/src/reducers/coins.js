@@ -26,6 +26,7 @@ export const removeCoin = (id) => {
     }
 }
 
+//Do NOT chang data types in reducers... even if it works it WILL break things later
 export default ( state = [], action ) => {
     switch(action.type) {
         case COINS:
@@ -36,7 +37,7 @@ export default ( state = [], action ) => {
             return [...state, action.coin ]
         case REMOVE_COIN:
             // { type: REMOVE_COIN, id: 7 }
-            return state.filter( c => c.id !== action.id )
+            return state.filter( c => c.id !== action.id ) //filter returns an array so were good.
         default:
             return state
     }
