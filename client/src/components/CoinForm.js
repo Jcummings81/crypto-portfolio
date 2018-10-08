@@ -4,34 +4,35 @@ import { connect } from 'react-redux'
 import { addCoin } from '../reducers/coins'
 
 class CoinForm extends React.Component {
-    state = { coin: '' }
+  state = { coin: '' }
 
-    handleChange = (e) => {
-        const {name, value} = e.target
-        this.setState({ [name]: value })
-    }
+  handleChange = (e) => {
+    const { name, value } = e.target
+    this.setState({ [name]: value })
+  }
 
-    handleSubmit = (e) => {
-        e.preventDefault()
-        const { dispatch } = this.props
-        const { coin } = this.state
-        dispatch(addCoin(coin))
-        this.setState({ coin: ''})
-    }
+  handleSubmit = (e) => {
+    e.preventDefault()
+    const { dispatch, resetForm } = this.props
+    const { coin } = this.state
+    dispatch(addCoin(coin))
+   resetForm()
+  }
 
-    render () {
-        return (
-            <Form onSubmit={this.handleSubmit}>
-                <Form.Input
-                    label="Watch Coin"
-                    value={this.}
-
-                    >
-                    
-                    </Form.Input>
-            </Form>
-        )
-    }
+  render() {
+    return (
+      <Form onSubmit={this.handleSubmit}>
+        <Form.Input
+          label="Watch Coin"
+          value={this.state.coin}
+          onChange={this.handleChange}
+          name="coin"
+          required
+        />
+        <Form.Button>Add Coin</Form.Button>
+      </Form>
+    )
+  }
 }
 
-export default CoinForm
+export default connect()(CoinForm)

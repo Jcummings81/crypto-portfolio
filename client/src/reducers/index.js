@@ -6,6 +6,7 @@ import coins from './coins'
 const rootReducer = combineReducers({
   user,
   flash,
+  coins
 });
 
 export default rootReducer;

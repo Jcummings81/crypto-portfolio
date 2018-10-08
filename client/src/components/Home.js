@@ -3,11 +3,11 @@ import CoinForm from './CoinForm'
 import CoinList from './CoinList'
 
 
-const Home = () (
-  <>
+const Home = () => (
+  <div>
     <CoinForm />
     <CoinList />
-  </>
+  </div>
 )
 
 export default Home;
